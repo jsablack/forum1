@@ -3,7 +3,7 @@ var express = require('express'),
 	Post	= require(../models/Post);
 
 	router.get('/', function(res, req){
-		Post.find(function(req, res){
+		Post.find(function(err, posts){
 			console.log(post);
 			res.render('home', {postArray: posts});
 		});
