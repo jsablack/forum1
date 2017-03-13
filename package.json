@@ -1,0 +1,27 @@
+{
+  "name": "forum1",
+  "version": "1.0.0",
+  "description": "forum",
+  "main": "./server/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sloughage/forum1.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sloughage/forum1/issues"
+  },
+  "homepage": "https://github.com/sloughage/forum1#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "express-session": "^1.15.1",
+    "hbs": "^4.0.1",
+    "mongoose": "^4.8.7"
+  }
+}
