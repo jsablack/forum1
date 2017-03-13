@@ -3,10 +3,12 @@ var express = require('express'),
 	server = require('http').createServer(app),
 	path = require('path'),
 	session = require('express-session'),
+	hbs = require('hbs'),
 	bodyParser = require('body-parser');
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+hbs.registerPartials(__dirname + '/views/partials');
 
 app.use(session({
 	secret: "secret salt",
@@ -23,7 +25,14 @@ require('./db/db');
 
 var UserCont = require('./controllers/UserController');
 
-app.use('/', UserCont);
+app.get('/', function (req, res) {
+	res.render('threads', {
+		isLoggedIn: req.session.isLoggedIn,
+		title: "forum1"
+	});
+});
+
+app.use('/user', UserCont);
 
 server.listen(3000, function () {
 	console.log('server is listening on port 3000');
