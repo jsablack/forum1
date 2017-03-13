@@ -10,8 +10,8 @@ var express = require('express'),
 	});
 
 	router.post('/', function(req, res){
-		var post = new Post({user = req.body.user,
-							time = req.body.time,
+		var post = new Post({user = req.session.user,
+							time = req.session.time,
 							content = req.body.content});
 		post.save();
 		res.redirect('/');
