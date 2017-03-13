@@ -32,3 +32,20 @@ a:active, a:hover {
 .filler {
 	flex-grow: 1;
 }
+
+.vbox {
+	display: flex;
+	flex-direction: column;
+}
+
+.hbox {
+	
+}
+
+.loginbox {
+
+}
+
+.newpost {
+
+}
