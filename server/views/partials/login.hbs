@@ -1,0 +1,14 @@
+<div class='loginbox'>
+	{{#if isLoggedIn}}
+	<a href='/user/logout'>logout</a>
+	{{/if}}
+
+	{{#unless isLoggedIn}}
+	<form action='/user/login' method='POST'>
+	   <input type='text' name='username' placeholder="username">
+	   <input type='password' name='password' placeholder="password">
+	   <button>login</button>
+	</form>
+	<a href='/user/register'>register</a>
+	{{/unless}}
+</div>

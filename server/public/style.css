@@ -1,0 +1,34 @@
+body {
+	color: white;
+	background-color: black;
+}
+
+header {
+	display: flex;
+	border: solid 1px white;
+}
+
+a:link {
+	color: powderblue;
+}
+
+a:visited {
+	color: plum;
+}
+
+a:active, a:hover {
+	color: white;
+}
+
+.mainlink:link, .mainlink:visited {
+	color: white;
+}
+
+.threadbox {
+	display: flex;
+	border: solid 1px white;
+}
+
+.filler {
+	flex-grow: 1;
+}

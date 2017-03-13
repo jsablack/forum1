@@ -3,8 +3,8 @@ var express = require('express'),
 	User = require('../models/UserModel'),
 	bcrypt = require('bcryptjs');
 
-router.get('/', function (req, res) {
-	res.render('home', {});
+router.get('/login', function(req, res) {
+	res.redirect('/');
 });
 
 router.post('/login', function (req, res) {
@@ -15,19 +15,30 @@ router.post('/login', function (req, res) {
 					req.session.username = user.username;
 					req.session.userId = user.id;
 					req.session.isLoggedIn = true;
-					res.render('home', {});
+					res.redirect('/');
 				} else {
-					res.render('home', {message: 'username/password not found'});
+					res.render('threads', {
+						isLoggedIn: req.session.isLoggedIn,
+						title: "forum1",
+						message: "user not found"
+					});
 				}
 			});
 		} else {
-			res.render('home', {message: 'username/password not found'});
+			res.render('threads', {
+				isLoggedIn: req.session.isLoggedIn,
+				title: "forum1",
+				message: "user not found"
+			});
 		}
 	});
 });
 
 router.get('/register', function (req, res, next) {
-	res.render('register', {isLoggedIn: req.session.isLoggedIn});
+	res.render('register', {
+		isLoggedIn: req.session.isLoggedIn,
+		title: "forum1: register"
+	});
 });
 
 router.post('/register', function (req, res, next) {
@@ -46,13 +57,21 @@ router.post('/register', function (req, res, next) {
 							req.session.isLoggedIn = true;
 							res.redirect('/');
 						} else {
-							res.render('register', {message: "error"});
+							res.render('register', {
+								isLoggedIn: req.session.isLoggedIn,
+								title: "forum1: register",
+								message: "error"
+							});
 						}
 					});
 				});
 			});
 		} else {
-			res.render('register', {message: 'username taken'});
+			res.render('register', {
+				isLoggedIn: req.session.isLoggedIn,
+				title: "forum1: register",
+				message: "username taken"
+			});
 		}
 	});
 });
@@ -61,6 +80,12 @@ router.get('/logout', function (req, res) {
 	req.session.destroy(function (err) {
 		res.redirect('/');
 	});
+});
+
+router.get('/registerlogout', function (req, res) {
+	req.session.destroy(function (err) {
+		res.redirect('/user/register');
+	})
 });
 
 module.exports = router;
