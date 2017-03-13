@@ -2,17 +2,16 @@ var express = require('express'),
 	router  = express.Router(),
 	Post	= require(../models/Post);
 
-	router.get('/', function(res, req){
+	router.get('/', function(req, res){
 		Post.find(function(err, posts){
-			console.log(post);
 			res.render('home', {postArray: posts});
 		});
 	});
 
 	router.post('/', function(req, res){
-		var post = new Post({user = req.session.user,
-							time = req.session.time,
-							content = req.body.content});
+		var post = new Post({user: req.session.name,
+							time: req.body.time,
+							content: req.body.content});
 		post.save();
 		res.redirect('/');
 	});
