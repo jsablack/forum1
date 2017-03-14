@@ -1,18 +1,19 @@
+{{threadtitle}}
 {{#each posts}}
 <div class='postbox'>
     <div class='left'>
-        {{this.username}}
-        {{this.timestamp}}
+        <p>{{this.username}}</p>
+        <p>{{this.timestamp}}</p>
     </div>
     <div class='right'>
-        {{this.content}}
+        <p>{{this.content}}</p>
     </div>
 </div>
 {{/each}}
 {{#if isLoggedIn}}
 <div class='newpostbox'>
-    <form action='/post' method="post">
-        <input type='textarea' name='content' required>
+    <form action='/post/{{threadId}}' method="post">
+        <input type='textarea' name='content' autofocus required>
         <button type='submit'>post</button>
     </form>
 </div>

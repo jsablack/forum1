@@ -1,8 +1,8 @@
 {{#if isLoggedIn}}
-<div class='threadbox'><a href='/thread/new'>new thread</a></div>
+<div class='threadbox'><a href='/new'>new thread</a></div>
 {{/if}}
 {{#each threads}}
 <div class='threadbox'>
-    <a href='#'>{{this.title}}</a>
+    <a href='/thread/{{this.id}}'>{{this.title}}</a>
 </div>
 {{/each}}

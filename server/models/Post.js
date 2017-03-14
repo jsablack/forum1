@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var PostSchema = new mongoose.Schema({
     username: String,
     timestamp: Number,
-    thread: Number,
+    threadId: String,
     content: String
 });
 

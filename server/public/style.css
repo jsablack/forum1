@@ -55,11 +55,13 @@ a:active, a:hover {
     border: solid white 1px;
 }
 
-.postbox .leftbox {
+.postbox .left {
+    display: flex;
+    flex-direction: column;
     border-right: solid white 1px;
 }
 
-.postbox .rightbox {
+.postbox .right {
     flex-grow: 1;
 }
 

@@ -6,7 +6,7 @@
 {{#unless isLoggedIn}}
 <form action='/user/register' method='POST'>
     <div class='vbox'>
-        <input type='text' name='username' class='shorttextbox' placeholder="username" required>
+        <input type='text' name='username' class='shorttextbox' placeholder="username" autofocus required>
         <input type='password' name='password' class='shorttextbox' placeholder="password" required>
         <button type='submit'>register</button>
     </div>
