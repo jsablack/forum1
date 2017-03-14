@@ -4,7 +4,7 @@ var express = require('express'),
     bcrypt = require('bcryptjs');
 
 router.get('/login', function (req, res) {
-    res.redirect('/');
+    res.redirect(req.header('Referer'));
 });
 
 router.post('/login', function (req, res) {
@@ -18,22 +18,16 @@ router.post('/login', function (req, res) {
                         req.session.username = user.username;
                         req.session.userId = user.id;
                         req.session.isLoggedIn = true;
-                        res.redirect('/');
+                        res.redirect(req.header('Referer'));
                     } else {
-                        res.render('threads', {
-                            isLoggedIn: req.session.isLoggedIn,
-                            title: "forum1",
-                            message: "user not found"
-                        });
+                        // req.flash('info', "invalid login");
+                        res.redirect(req.header('Referer'));
                     }
                 }
             );
         } else {
-            res.render('threads', {
-                isLoggedIn: req.session.isLoggedIn,
-                title: "forum1",
-                message: "user not found"
-            });
+            // req.flash('info', "invalid login");
+            res.redirect(req.header('Referer'));
         }
     });
 });
@@ -42,6 +36,7 @@ router.get('/register', function (req, res, next) {
     res.render('register', {
         isLoggedIn: req.session.isLoggedIn,
         title: "forum1: register"
+        // message: req.flash('info')
     });
 });
 
@@ -61,35 +56,43 @@ router.post('/register', function (req, res, next) {
                             req.session.isLoggedIn = true;
                             res.redirect('/');
                         } else {
-                            res.render('register', {
-                                isLoggedIn: req.session.isLoggedIn,
-                                title: "forum1: register",
-                                message: "error"
-                            });
+                            // req.flash('info', "error");
+                            res.redirect(req.header('Referer'));
                         }
                     });
                 });
             });
         } else {
-            res.render('register', {
-                isLoggedIn: req.session.isLoggedIn,
-                title: "forum1: register",
-                message: "username taken"
-            });
+            // req.flash('info', "username taken");
+            res.redirect(req.header('Referer'));
         }
     });
 });
 
 router.get('/logout', function (req, res) {
     req.session.destroy(function (err) {
-        res.redirect('/');
+        // req.flash('info', "logged out");
+        res.redirect(req.header('Referer'));
     });
 });
 
-router.get('/registerlogout', function (req, res) {
-    req.session.destroy(function (err) {
-        res.redirect('/user/register');
-    })
+router.get('/users', function (req, res) {
+    User.find(function (err, users) {
+        res.render('users', {
+            isLoggedIn: req.session.isLoggedIn,
+            title: "forum1: users",
+            // message: req.flash('info'),
+            users: users
+        });
+    });
+});
+
+router.delete('/:id', function (req, res) {
+    User.findById(req.params.id, function (err, user) {
+        // req.flash('info', "deleted " + req.params.id);
+        user.remove();
+        res.send("deleted");
+    });
 });
 
 module.exports = router;

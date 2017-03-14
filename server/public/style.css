@@ -5,7 +5,11 @@ body {
 
 header {
     display: flex;
-    border: solid 1px white;
+    border: solid white 1px;
+}
+
+button {
+    width: 60px;
 }
 
 a:link {
@@ -26,7 +30,7 @@ a:active, a:hover {
 
 .threadbox {
     display: flex;
-    border: solid 1px white;
+    border: solid white 1px;
 }
 
 .filler {
@@ -46,6 +50,19 @@ a:active, a:hover {
 
 }
 
-.newpost {
+.postbox {
+    display: flex;
+    border: solid white 1px;
+}
 
+.postbox .leftbox {
+    border-right: solid white 1px;
+}
+
+.postbox .rightbox {
+    flex-grow: 1;
+}
+
+.shorttextbox {
+    width: 125px;
 }

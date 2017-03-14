@@ -1,0 +1,19 @@
+{{#each posts}}
+<div class='postbox'>
+    <div class='left'>
+        {{this.username}}
+        {{this.timestamp}}
+    </div>
+    <div class='right'>
+        {{this.content}}
+    </div>
+</div>
+{{/each}}
+{{#if isLoggedIn}}
+<div class='newpostbox'>
+    <form action='/post' method="post">
+        <input type='textarea' name='content' required>
+        <button type='submit'>post</button>
+    </form>
+</div>
+{{/if}}

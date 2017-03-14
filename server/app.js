@@ -4,14 +4,16 @@ var express = require('express'),
     path = require('path'),
     session = require('express-session'),
     hbs = require('hbs'),
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    Thread = require('./models/Thread'),
+    Post = require('./models/Post');
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials');
 
 app.use(session({
-    secret: "secret salt",
+    secret: 'secret salt',
     resave: false,
     saveUninitialized: true,
     cookie: {secure: false}
@@ -27,10 +29,41 @@ var UserCont = require('./controllers/UserController');
 var ThreadCont = require('./controllers/ThreadController');
 
 app.get('/', function (req, res) {
-    res.render('threads', {
+    Thread.find(function(err, threads) {
+        var sThreads = threads.sort(function (a, b) {
+            return b.timestamp - a.timestamp;
+        });
+        res.render('threads', {
+            isLoggedIn: req.session.isLoggedIn,
+            title: "forum1",
+            threads: sThreads
+        });
+    });
+});
+
+app.get('/new', function (req, res) {
+    res.render('newThread', {
         isLoggedIn: req.session.isLoggedIn,
-        title: "forum1",
-        threads: [{title: "fish"}, {title: "cat"}, {title: "dog"}]
+        title: "forum1: new thread",
+    });
+});
+
+app.post('/new', function (req, res) {
+    var newThread = {
+        title: req.body.title,
+        size: 1,
+        timestamp: Date.now()
+    }
+    Thread.create(newThread, function (err, thread) {
+        var newPost = {
+            username: req.session.username,
+            content: req.body.content,
+            timestamp: thread.timestamp,
+            threadId: thread.id
+        }
+        Post.create(newPost, function (err2, post) {
+            res.redirect('/');
+        });
     });
 });
 
