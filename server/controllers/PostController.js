@@ -1,6 +1,6 @@
 var express = require('express'),
     router = express.Router(),
-    Post = require(../models/Post);
+    Post = require('../models/Post');
 
 router.get('/', function(req, res){
     if(req.session.isLoggedIn) {
