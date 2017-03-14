@@ -3,28 +3,40 @@ var express = require('express'),
     Post = require(../models/Post);
 
 router.get('/', function(req, res){
-    Post.find(function(err, posts){
-        res.render('home', {postArray: posts});
-    });
+    if(req.session.isLoggedIn) {
+        Post.find(function(err, posts){
+        res.render('/', {
+            isLoggedIn: req.session.isLoggedIn,
+            postArray: posts},
+    })else{
+        res.redirect('')
+    })
+    };
 });
 
 router.post('/', function(req, res){
-    var post = new Post({
+    if (req.session.isLoggedIn){
+    var newPost = new Post({
         user: req.session.name,
-        time: req.body.time,
+        timestamp: Date.now(),
         content: req.body.content
+    }
+    Post.create(newPost, function(err){
+        isLoggedIn: req.session.isLoggedIn,
+        res.redirect('/');
     });
-    post.save();
-    res.redirect('/');
+    })else{
+        res.redirect('/');
+    };
 });
 
 router.patch('/:id', function(req, res){
     var id      = req.params.id;
     var newInfo = req.body;
     Post.findById(id, function(err, post){
-        post.user    = newInfo.user;
-        post.time    = newInfo.time;
+        post.user    = req.session.name;
         post.content = newInfo.content;
+        timestamp: Date.now();
 
         post.save();
 
