@@ -1,45 +1,45 @@
 body {
-	color: white;
-	background-color: black;
+    color: white;
+    background-color: black;
 }
 
 header {
-	display: flex;
-	border: solid 1px white;
+    display: flex;
+    border: solid 1px white;
 }
 
 a:link {
-	color: powderblue;
+    color: powderblue;
 }
 
 a:visited {
-	color: plum;
+    color: plum;
 }
 
 a:active, a:hover {
-	color: white;
+    color: white;
 }
 
 .mainlink:link, .mainlink:visited {
-	color: white;
+    color: white;
 }
 
 .threadbox {
-	display: flex;
-	border: solid 1px white;
+    display: flex;
+    border: solid 1px white;
 }
 
 .filler {
-	flex-grow: 1;
+    flex-grow: 1;
 }
 
 .vbox {
-	display: flex;
-	flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .hbox {
-	
+
 }
 
 .loginbox {

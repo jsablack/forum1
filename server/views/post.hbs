@@ -1,33 +1,31 @@
-
-
 <div id="posts">
-	<table id="" class="" border="1">
-		{{#each postArray}}
-		<tr data-id="{{this.id}}">
-			<td class="left">
-				<div class="info">
-					<input type="text" name="user" value="{{this.user}}"/>
-					<input type="text" name="time" value="{{this.time}}"/>
-				</div>
-			</td>
-			<td class="right">
-				<div class="content">
-					<input type="text" name="content" value="{{this.content}}">
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td class="left">
-			</td>
-			<td class="right">
-				<button class="edit-post">
-					EDIT
-				</button>
-				<button class="delete-post">
-					DELETE
-				</button>
-			</td>
-		</tr>
-		{{/each}}
-	</table>
+    <table id="" class="" border="1">
+        {{#each postArray}}
+        <tr data-id="{{this.id}}">
+            <td class="left">
+                <div class="info">
+                    <input type="text" name="user" value="{{this.user}}"/>
+                    <input type="text" name="time" value="{{this.time}}"/>
+                </div>
+            </td>
+            <td class="right">
+                <div class="content">
+                    <input type="text" name="content" value="{{this.content}}">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="left">
+            </td>
+            <td class="right">
+                <button class="edit-post">
+                    EDIT
+                </button>
+                <button class="delete-post">
+                    DELETE
+                </button>
+            </td>
+        </tr>
+        {{/each}}
+    </table>
 </div>
