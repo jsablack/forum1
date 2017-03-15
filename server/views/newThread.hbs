@@ -1,8 +1,10 @@
 {{#if isLoggedIn}}
 <form action='/new' method='post'>
-    <input type='text' name='title' placeholder="title" required>
-    <input type='textarea' name='content' required>
-    <button type='submit'>post</button>
+    <div class='newpostbox'>
+        <input type='text' name='title' class='threadtitleinputbox' placeholder="title" required>
+        <div class='hbox'><textarea name='content' class='textarea' required></textarea></div>
+        <button type='submit'>post</button>
+    </div>
 </form>
 {{/if}}
 {{#unless isLoggedIn}}

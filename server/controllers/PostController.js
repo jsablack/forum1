@@ -38,7 +38,7 @@ router.post('/:id', function (req, res) {
                 thread.timestamp = post.timestamp;
                 thread.save(function (err3) {
                     res.redirect('/');
-                })
+                });
             };
         });
     });

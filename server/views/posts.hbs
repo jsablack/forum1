@@ -1,4 +1,4 @@
-{{threadtitle}}
+<div class="threadtitlebox">{{threadtitle}}</div>
 {{#each posts}}
 <div class='postbox'>
     <div class='left' data-id='{{this.id}}'>
@@ -13,16 +13,18 @@
     <div class='right'>
         <p class='h'>{{this.content}}</p>
         {{#if this.isUser}}
-        <textarea name='content' class='h hidden' required>{{this.content}}</textarea>
+        <textarea name='content' class='textarea h hidden' required>{{this.content}}</textarea>
         {{/if}}
     </div>
 </div>
 {{/each}}
 {{#if isLoggedIn}}
-<div class='newpostbox'>
-    <form action='/post/{{threadId}}' method='post'>
-        <textarea name='content' autofocus required></textarea>
+<form action='/post/{{threadId}}' method='post'>
+    <div class='newpostbox'>
+        <div class='hbox'>
+            <textarea name='content' class='textarea' autofocus required></textarea>
+        </div>
         <button type='submit'>post</button>
-    </form>
-</div>
+    </div>
+</form>
 {{/if}}
