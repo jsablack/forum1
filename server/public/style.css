@@ -68,3 +68,7 @@ a:active, a:hover {
 .shorttextbox {
     width: 125px;
 }
+
+.hidden {
+    display: none;
+}

@@ -1,19 +1,27 @@
 {{threadtitle}}
 {{#each posts}}
 <div class='postbox'>
-    <div class='left'>
+    <div class='left' data-id='{{this.id}}'>
         <p>{{this.username}}</p>
-        <p>{{this.timestamp}}</p>
+        <p>{{this.time}}</p>
+        {{#if this.isUser}}
+        <button class='edit-post h'>edit</button>
+        <button class='patch-post h hidden'>save</button>
+        <button class='delete-post h hidden'>delete</button>
+        {{/if}}
     </div>
     <div class='right'>
-        <p>{{this.content}}</p>
+        <p class='h'>{{this.content}}</p>
+        {{#if this.isUser}}
+        <textarea name='content' class='h hidden' required>{{this.content}}</textarea>
+        {{/if}}
     </div>
 </div>
 {{/each}}
 {{#if isLoggedIn}}
 <div class='newpostbox'>
-    <form action='/post/{{threadId}}' method="post">
-        <input type='textarea' name='content' autofocus required>
+    <form action='/post/{{threadId}}' method='post'>
+        <textarea name='content' autofocus required></textarea>
         <button type='submit'>post</button>
     </form>
 </div>

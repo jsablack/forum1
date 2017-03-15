@@ -87,11 +87,11 @@ router.get('/users', function (req, res) {
     });
 });
 
-router.delete('/:id', function (req, res) {
-    User.findById(req.params.id, function (err, user) {
+router.delete('/', function (req, res) {
+    User.findById(req.body.id, function (err, user) {
         // req.flash('info', "deleted " + req.params.id);
         user.remove();
-        res.send("deleted");
+        res.send("user deleted");
     });
 });
 

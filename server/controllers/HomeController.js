@@ -32,6 +32,7 @@ router.post('/new', function (req, res) {
     Thread.create(newThread, function (err, thread) {
         var newPost = {
             username: req.session.username,
+            userId: req.session.userId,
             content: req.body.content,
             timestamp: thread.timestamp,
             threadId: thread.id

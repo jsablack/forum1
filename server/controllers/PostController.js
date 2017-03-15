@@ -21,9 +21,10 @@ var express = require('express'),
 //     };
 // });
 
-router.post('/:id', function(req, res){
+router.post('/:id', function (req, res) {
     var newPost = {
         username: req.session.username,
+        userId: req.session.userId,
         timestamp: Date.now(),
         content: req.body.content,
         threadId: req.params.id
@@ -40,6 +41,21 @@ router.post('/:id', function(req, res){
                 })
             };
         });
+    });
+});
+
+router.patch('/', function (req, res) {
+    Post.findById(req.body.id, function (err, post) {
+        post.content = req.body.content;
+        post.save();
+        res.send("post updated");
+    });
+});
+
+router.delete('/', function (req, res) {
+    Post.findById(req.body.id, function (err, post) {
+        post.remove();
+        res.send("post deleted");
     });
 });
 
