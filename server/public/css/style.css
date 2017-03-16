@@ -1,7 +1,6 @@
 body {
     color: white;
     background-color: black;
-    padding: 3px;
 }
 
 button {
@@ -41,12 +40,12 @@ a:active, a:hover {
 }
 
 .space_h {
-    width: 3px;
+    width: 6px;
 }
 
 .box {
     display: flex;
-    margin: 3px;
+    margin: 6px;
     padding: 6px;
     min-width: 254px;
 }
