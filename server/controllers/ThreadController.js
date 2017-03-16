@@ -26,7 +26,7 @@ router.get('/:id', function (req, res) {
                             x.time = date.toLocaleTimeString();
                         }
                     });
-                    res.render('posts', {
+                    res.render('thread', {
                         isLoggedIn: req.session.isLoggedIn,
                         title: "forum1: " + thread.title,
                         threadtitle: thread.title,

@@ -1,7 +1,7 @@
 {{#if isLoggedIn}}
 <form action='/new' method='post'>
     <div class='box v border'>
-        <input type='text' name='title' class='textbox_l' placeholder="title" required>
+        <input type='text' name='title' class='textbox_l' placeholder="title" maxlength='100' required>
         <div class='space_v'></div>
         <div class='cont'><textarea name='content' required></textarea></div>
         <div class='space_v'></div>

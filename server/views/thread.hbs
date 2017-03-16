@@ -1,8 +1,8 @@
-<div class='box'><p class='threadtitle'>{{threadtitle}}</p></div>
+<div class='box'><p class='overflow'>{{threadtitle}}</p></div>
 {{#each posts}}
 <div class='box border'>
     <div class='leftcont' data-id='{{this.id}}'>
-        <p>{{this.username}}</p>
+        <p class='overflow'>{{this.username}}</p>
         <p>{{this.time}}</p>
         {{#if this.isUser}}
         <button class='edit-post h'>edit</button>

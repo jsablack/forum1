@@ -11,7 +11,7 @@ router.get('/', function (req, res) {
             var sThreads = threads.sort(function (a, b) {
                 return b.timestamp - a.timestamp;
             });
-            res.render('threads', {
+            res.render('home', {
                 isLoggedIn: req.session.isLoggedIn,
                 title: "forum1",
                 threads: sThreads
@@ -21,7 +21,7 @@ router.get('/', function (req, res) {
 });
 
 router.get('/new', function (req, res) {
-    res.render('newThread', {
+    res.render('new', {
         isLoggedIn: req.session.isLoggedIn,
         title: "forum1: new thread",
     });

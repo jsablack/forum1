@@ -61,9 +61,10 @@ a:active, a:hover {
 
 .border {
     border: solid white 1px;
+    border-radius: 6px;
 }
 
-.threadtitle {
+.overflow {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
