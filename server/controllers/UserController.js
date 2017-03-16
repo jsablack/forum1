@@ -32,7 +32,7 @@ router.post('/login', function (req, res) {
     });
 });
 
-router.get('/register', function (req, res, next) {
+router.get('/register', function (req, res) {
     res.render('register', {
         isLoggedIn: req.session.isLoggedIn,
         title: "forum1: register"
@@ -43,13 +43,13 @@ router.get('/register', function (req, res, next) {
 router.post('/register', function (req, res, next) {
     User.findOne({username: req.body.username}, function (err, user) {
         if (user === null) {
-            bcrypt.genSalt(10, function (err, salt) {
-                bcrypt.hash(req.body.password, salt, function (err, hash) {
+            bcrypt.genSalt(10, function (err2, salt) {
+                bcrypt.hash(req.body.password, salt, function (err3, hash) {
                     var newUser = {
                         username: req.body.username,
                         password: hash
                     };
-                    User.create(newUser, function (err, user) {
+                    User.create(newUser, function (err4, user) {
                         if (user) {
                             req.session.username = user.username;
                             req.session.userId = user.id;
@@ -57,7 +57,7 @@ router.post('/register', function (req, res, next) {
                             res.redirect('/');
                         } else {
                             // req.flash('info', "error");
-                            res.redirect(req.header('Referer'));
+                            res.send(err4);
                         }
                     });
                 });

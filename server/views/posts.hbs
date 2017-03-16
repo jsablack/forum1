@@ -1,7 +1,7 @@
-<div class="threadtitlebox">{{threadtitle}}</div>
+<div class='box'><p class='threadtitle'>{{threadtitle}}</p></div>
 {{#each posts}}
-<div class='postbox'>
-    <div class='left' data-id='{{this.id}}'>
+<div class='box border'>
+    <div class='leftcont' data-id='{{this.id}}'>
         <p>{{this.username}}</p>
         <p>{{this.time}}</p>
         {{#if this.isUser}}
@@ -10,20 +10,19 @@
         <button class='delete-post h hidden'>delete</button>
         {{/if}}
     </div>
-    <div class='right'>
+    <div class='rightcont'>
         <p class='h'>{{this.content}}</p>
         {{#if this.isUser}}
-        <textarea name='content' class='textarea h hidden' required>{{this.content}}</textarea>
+        <textarea name='content' class='h hidden' required>{{this.content}}</textarea>
         {{/if}}
     </div>
 </div>
 {{/each}}
 {{#if isLoggedIn}}
 <form action='/post/{{threadId}}' method='post'>
-    <div class='newpostbox'>
-        <div class='hbox'>
-            <textarea name='content' class='textarea' autofocus required></textarea>
-        </div>
+    <div class='box v border'>
+        <div class='cont'><textarea name='content' autofocus required></textarea></div>
+        <div class='space_v'></div>
         <button type='submit'>post</button>
     </div>
 </form>

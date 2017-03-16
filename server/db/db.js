@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var conStr = 'mongodb://localhost/forum';
+var conStr = 'mongodb://localhost/forum1';
 
 mongoose.connect(conStr);
 

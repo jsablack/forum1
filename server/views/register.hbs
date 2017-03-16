@@ -1,13 +1,13 @@
 {{#if isLoggedIn}}
-<p>
-    <a href='/user/logout'>logout</a> before registering a new account
-</p>
+<div class='box'><p><a href='/user/logout'>logout</a> before registering a new account</p></div>
 {{/if}}
 {{#unless isLoggedIn}}
-<form action='/user/register' method='POST'>
-    <div class='vbox'>
-        <input type='text' name='username' class='shorttextbox' placeholder="username" autofocus required>
-        <input type='password' name='password' class='shorttextbox' placeholder="password" required>
+<form action='/user/register' method='post'>
+    <div class='box v'>
+        <input type='text' name='username' class='textbox_s' placeholder="username" autofocus required>
+        <div class='space_v'></div>
+        <input type='password' name='password' class='textbox_s' placeholder="password" required>
+        <div class='space_v'></div>
         <button type='submit'>register</button>
     </div>
 </form>

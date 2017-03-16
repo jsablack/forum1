@@ -5,14 +5,18 @@ var express = require('express'),
 
 router.get('/', function (req, res) {
     Thread.find(function(err, threads) {
-        var sThreads = threads.sort(function (a, b) {
-            return b.timestamp - a.timestamp;
-        });
-        res.render('threads', {
-            isLoggedIn: req.session.isLoggedIn,
-            title: "forum1",
-            threads: sThreads
-        });
+        if (err) {
+            res.send(err);
+        } else {
+            var sThreads = threads.sort(function (a, b) {
+                return b.timestamp - a.timestamp;
+            });
+            res.render('threads', {
+                isLoggedIn: req.session.isLoggedIn,
+                title: "forum1",
+                threads: sThreads
+            });
+        }
     });
 });
 
@@ -30,16 +34,26 @@ router.post('/new', function (req, res) {
         timestamp: Date.now()
     }
     Thread.create(newThread, function (err, thread) {
-        var newPost = {
-            username: req.session.username,
-            userId: req.session.userId,
-            content: req.body.content,
-            timestamp: thread.timestamp,
-            threadId: thread.id
+        if (err) {
+            // message: error
+            res.send(err);
+        } else {
+            var newPost = {
+                username: req.session.username,
+                userId: req.session.userId,
+                content: req.body.content,
+                timestamp: thread.timestamp,
+                threadId: thread.id
+            }
+            Post.create(newPost, function (err2, post) {
+                if (err2) {
+                    //message: error
+                    res.send(err2);
+                } else {
+                    res.redirect('/');
+                }
+            });
         }
-        Post.create(newPost, function (err2, post) {
-            res.redirect('/');
-        });
     });
 });
 

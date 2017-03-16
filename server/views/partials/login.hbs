@@ -1,21 +1,23 @@
-{{#if isLoggedIn}}
-<a href='/user/logout'>logout</a>
-{{/if}}
+<div>
+    {{#if isLoggedIn}}
+    <a href='/user/logout'>logout</a>
+    {{/if}}
 
-{{#unless isLoggedIn}}
-<form action='/user/login' method='POST'>
-    <div class="vbox">
-        <div class="hbox">
-            <input type='text' name='username' class='shorttextbox' placeholder="username" tabindex=2 required>
-            <div class='filler3'></div>
-            <button tabindex=4>login</button>
+    {{#unless isLoggedIn}}
+    <form action='/user/login' method='POST'>
+        <div class="cont v">
+            <div class="cont">
+                <input type='text' name='username' class='textbox_s' placeholder="username" tabindex=2 required>
+                <div class='space_h'></div>
+                <button tabindex=4>login</button>
+            </div>
+            <div class="space_v"></div>
+            <div class="cont">
+                <input type='password' name='password' class='textbox_s' placeholder="password" tabindex=3 required>
+                <div class='space_h'></div>
+                <a href='/user/register' tabindex=5>register</a>
+            </div>
         </div>
-        <div class="filler2"></div>
-        <div class="hbox">
-            <input type='password' name='password' class='shorttextbox' placeholder="password" tabindex=3 required>
-            <div class='filler3'></div>
-            <a href='/user/register' tabindex=5>register</a>
-        </div>
-    </div>
-</form>
-{{/unless}}
+    </form>
+    {{/unless}}
+</div>

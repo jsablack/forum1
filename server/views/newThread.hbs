@@ -1,12 +1,14 @@
 {{#if isLoggedIn}}
 <form action='/new' method='post'>
-    <div class='newpostbox'>
-        <input type='text' name='title' class='threadtitleinputbox' placeholder="title" required>
-        <div class='hbox'><textarea name='content' class='textarea' required></textarea></div>
+    <div class='box v border'>
+        <input type='text' name='title' class='textbox_l' placeholder="title" required>
+        <div class='space_v'></div>
+        <div class='cont'><textarea name='content' required></textarea></div>
+        <div class='space_v'></div>
         <button type='submit'>post</button>
     </div>
 </form>
 {{/if}}
 {{#unless isLoggedIn}}
-<p>login to post a new thread</p>
+<div class='box'><p>login to post a new thread</p></div>
 {{/unless}}
