@@ -32,6 +32,7 @@ app.use('/thread', require('./controllers/ThreadController'));
 app.use('/post', require('./controllers/PostController'));
 app.use('/', require('./controllers/HomeController'))
 
-server.listen(3000, function () {
-    console.log('server is listening on port 3000');
-});
+server.listen(process.env.PORT || 5000);
+// function () {
+//     console.log('server is listening on port 3000');
+// });
